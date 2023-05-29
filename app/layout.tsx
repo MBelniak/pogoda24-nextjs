@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import * as admin from 'firebase-admin';
 import { credential } from 'firebase-admin';
-import { TopBar } from '@/app/components/TopBar';
+import { TopBar } from '@/app/(components)/TopBar';
 const inter = Inter({ subsets: ['latin'] });
 
 const serviceAccount = require('../pogoda-24-7-key.json');

@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect } from 'react';
-// import { AdvancedImage } from '@cloudinary/react';
+import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
-// import '../../sass/main.scss';
-// import './ForecastMapList.scss';
+import { cloudinary } from '@/cloudinary';
 // import { closeModal, showModal } from './ModalWindow';
 
 export const ForecastMapList: React.FC<{ imagesPublicIds: string[] }> = ({ imagesPublicIds }) => {
@@ -44,12 +43,12 @@ export const ForecastMapList: React.FC<{ imagesPublicIds: string[] }> = ({ image
         <div className="columns is-centered is-multiline">
             {imagesPublicIds.map((imagePublicId, i) => (
                 <div className="forecastMapImage column is-half" key={i}>
-                    {/*<AdvancedImage*/}
-                    {/*    cldImg={cloudinary*/}
-                    {/*        .image(imagePublicId)*/}
-                    {/*        .format('png')*/}
-                    {/*        .quality('auto')*/}
-                    {/*        .resize(fill().gravity('faces'))}></AdvancedImage>*/}
+                    <AdvancedImage
+                        cldImg={cloudinary
+                            .image(imagePublicId)
+                            .format('png')
+                            .quality('auto')
+                            .resize(fill().gravity('faces'))}></AdvancedImage>
                 </div>
             ))}
         </div>

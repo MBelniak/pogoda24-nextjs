@@ -1,9 +1,9 @@
 import React from 'react';
 import { ExternalApi } from '@/components/ExternalApi';
 import { getFirestore } from 'firebase-admin/firestore';
-import { PostsList } from '@/app/components/PostsList';
+import { PostsList } from '@/app/(components)/PostsList';
 import Post from '@/model/Post';
-import { CurrentWarnings } from '@/app/components/CurrentWarnings';
+import { CurrentWarnings } from '@/app/(components)/CurrentWarnings';
 import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc';
 import sort from 'lodash/sortBy';
 const db = getFirestore();
