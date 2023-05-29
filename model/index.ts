@@ -16,3 +16,9 @@ export enum PostType {
     WARNING = 'WARNING',
     FACT = 'FACT'
 }
+
+export const HrefToPostType: Record<string, PostType> = {
+    forecasts: PostType.FORECAST,
+    warnings: PostType.WARNING,
+    facts: PostType.FACT
+};

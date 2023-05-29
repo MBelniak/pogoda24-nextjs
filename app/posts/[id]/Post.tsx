@@ -2,8 +2,8 @@ import React from 'react';
 
 import { firestore } from 'firebase-admin';
 import Timestamp = firestore.Timestamp;
-import { PostType } from '@/model/PostDTO';
-import { Divider } from '@/components/Divider';
+import { PostType } from '@/model';
+import { Divider } from '@/shared-components/Divider';
 import { ForecastMapList } from '@/app/(components)/ForecastMapList';
 
 export interface PostProps {

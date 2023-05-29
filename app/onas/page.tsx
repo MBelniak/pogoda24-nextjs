@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from '@/components/Divider';
+import { Divider } from '@/shared-components/Divider';
 import { StaffItem } from '@/app/onas/StaffItem';
 import config from '@/config/config';
 export default async function ONas() {

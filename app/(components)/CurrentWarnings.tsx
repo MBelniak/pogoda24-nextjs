@@ -1,6 +1,6 @@
 import React from 'react';
 import { WarningInfo } from '@/app/page';
-import { Divider } from '@/components/Divider';
+import { Divider } from '@/shared-components/Divider';
 
 interface CurrentWarningsProps {
     warningInfo: WarningInfo[];

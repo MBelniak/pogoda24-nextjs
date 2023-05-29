@@ -1,5 +1,5 @@
 import React from 'react';
-import PostDTO from '../../model/PostDTO';
+import PostDTO from '../../model';
 import PostsListItem from './PostsListItem';
 import config from '../../config/config';
 import { registerView } from '@/service';

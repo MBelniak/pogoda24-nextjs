@@ -1,11 +1,13 @@
 import React from 'react';
-import { ExternalApi } from '@/components/ExternalApi';
+import { ExternalApi } from '@/shared-components/ExternalApi';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PostsList } from '@/app/(components)/PostsList';
-import PostDTO from '@/model/PostDTO';
+import PostDTO from '@/model';
 import { CurrentWarnings } from '@/app/(components)/CurrentWarnings';
 import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc';
 import sort from 'lodash/sortBy';
+import { firestore } from 'firebase-admin';
+import OrderByDirection = firestore.OrderByDirection;
 const db = getFirestore();
 const HOMEPAGE_POSTS_NUMBER = 6;
 
@@ -16,10 +18,10 @@ export interface WarningInfo {
 }
 
 const getPosts = async (): Promise<PostDTO[]> => {
-    const docs = await db.collection('posts').listDocuments();
+    const docs = await db.collection('posts').orderBy('postDate', 'desc').limit(HOMEPAGE_POSTS_NUMBER).get();
     return await Promise.all(
-        docs.slice(0, HOMEPAGE_POSTS_NUMBER).map(async doc => ({
-            ...((await doc.get()).data() as PostDTO),
+        docs.docs.map(async doc => ({
+            ...(doc.data() as PostDTO),
             id: doc.id
         }))
     );

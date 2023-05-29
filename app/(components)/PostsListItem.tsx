@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
-import PostDTO, { PostType } from '../../model/PostDTO';
+import PostDTO, { PostType } from '../../model';
 import { ForecastMapList } from './ForecastMapList';
 import { AdvancedImage } from '@cloudinary/react';
 import 'suneditor/dist/css/suneditor.min.css';
-import { Divider } from '@/components/Divider';
+import { Divider } from '@/shared-components/Divider';
 import config from '@/config/config';
 import { cloudinary } from '@/cloudinary';
 import { fill } from '@cloudinary/url-gen/actions/resize';
@@ -26,7 +26,7 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
 
     const isExpandedByDefault = React.useMemo(() => {
         let description;
-        if (props.post.postType === 'FACT') {
+        if (props.post.postType === PostType.FACT) {
             return false;
         } else {
             description = props.post.description;
@@ -38,7 +38,7 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
 
     const processDate = () => {
         console.dir(props.post);
-        const date = new Date(props.post.postDate._seconds).toLocaleString('pl-PL');
+        const date = new Date(props.post.postDate._seconds * 1000).toLocaleString('pl-PL');
         return date.replace(', ', ' o ');
     };
 

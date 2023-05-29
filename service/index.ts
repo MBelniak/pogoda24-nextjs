@@ -1,4 +1,4 @@
-export const registerView = (ids: number[]) => {
+export const registerView = (ids: string[]) => {
     const body = ids.map(postId => {
         return {
             postId: postId,

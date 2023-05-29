@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Post } from './Post';
 import { getFirestore } from 'firebase-admin/firestore';
-import PostDTO from '@/model/PostDTO';
+import PostDTO from '@/model';
 
 interface Props {
     params: {

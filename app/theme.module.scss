@@ -1,0 +1,24 @@
+$primary-color: #23425f;
+$secondary-color: #25a5a5;
+$primary-font-color: #222;
+$secondary-font-color: #353535;
+$footer-background-color: transparent;
+$footer-padding: 3rem 1.5rem 3rem;
+$font-size-large: 1.4rem;
+$font-size-medium: 1.2rem;
+$font-size-small: 1rem;
+
+$navbar-background-color: $secondary-color;
+$divider-background-color: $primary-color;
+$divider-thickness: 1px;
+$gap: 32px;
+$desktop: 960px + (2 * $gap);
+$tablet: 960px + (2 * $gap);
+$navbar-item-img-max-height: none;
+
+:export {
+    primaryColor: $primary-color;
+    secondaryColor: $secondary-color;
+    primaryFontColor: $primary-font-color;
+    secondaryFontColor: $secondary-font-color;
+}

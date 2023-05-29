@@ -50,15 +50,15 @@ export const TopBar: React.FC = () => {
             </div>
             <div id="pogodaMenu" className="navbar-menu">
                 <div className="navbar-end">
-                    <Link href={'/prognozy'} className={'navbar-item'}>
+                    <Link href={'/forecasts/0'} className={'navbar-item'}>
                         <FontAwesomeIcon fixedWidth icon={faCloudSun} className={'mx-2'} />
                         Prognozy
                     </Link>
-                    <Link href={'/ostrzezenia'} className={'navbar-item'}>
+                    <Link href={'/warnings/0'} className={'navbar-item'}>
                         <FontAwesomeIcon fixedWidth icon={faBolt} className={'mx-2'} />
                         Ostrzeżenia
                     </Link>
-                    <Link href={'/ciekawostki'} className={'navbar-item'}>
+                    <Link href={'/facts/0'} className={'navbar-item'}>
                         <FontAwesomeIcon fixedWidth icon={faNewspaper} className={'mx-2'} />
                         Ciekawostki
                     </Link>
