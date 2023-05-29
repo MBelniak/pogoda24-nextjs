@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../../model/Post';
+import PostDTO from '../../model/PostDTO';
 import PostsListItem from './PostsListItem';
 import config from '../../config/config';
 import { registerView } from '@/service';
@@ -7,11 +7,11 @@ import { registerView } from '@/service';
 const { nonExpandedPostLength } = config;
 
 interface PostsProps {
-    posts: Post[];
+    posts: PostDTO[];
 }
 
 export const PostsList: React.FC<PostsProps> = ({ posts }) => {
-    const isExpandedByDefault = (post: Post) => {
+    const isExpandedByDefault = (post: PostDTO) => {
         return post.description.length <= nonExpandedPostLength && post.description.split(/[(\r\n)(\n)]/g).length <= 2;
     };
 
@@ -21,6 +21,7 @@ export const PostsList: React.FC<PostsProps> = ({ posts }) => {
     return (
         <>
             {posts.map((post, i) => (
+                // @ts-expect-error
                 <PostsListItem post={post} key={i} />
             ))}
         </>

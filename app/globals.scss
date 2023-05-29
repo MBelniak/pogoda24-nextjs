@@ -64,6 +64,9 @@ $navbar-item-img-max-height: none;
     }
 }
 
+html {
+    overflow: auto;
+}
 body {
     background-color: rgba(#00b5f5, 0.05);
     background-size: 100vw 100%;
@@ -89,6 +92,7 @@ span {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: calc(100svh - 70px);
 }
 
 .is-divider {

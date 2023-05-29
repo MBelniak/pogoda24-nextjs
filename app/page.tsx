@@ -2,7 +2,7 @@ import React from 'react';
 import { ExternalApi } from '@/components/ExternalApi';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PostsList } from '@/app/(components)/PostsList';
-import Post from '@/model/Post';
+import PostDTO from '@/model/PostDTO';
 import { CurrentWarnings } from '@/app/(components)/CurrentWarnings';
 import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc';
 import sort from 'lodash/sortBy';
@@ -11,13 +11,18 @@ const HOMEPAGE_POSTS_NUMBER = 6;
 
 export interface WarningInfo {
     title: string;
-    postId: number;
+    postId: string;
     dueDate?: Date;
 }
 
-const getPosts = async (): Promise<Post[]> => {
+const getPosts = async (): Promise<PostDTO[]> => {
     const docs = await db.collection('posts').listDocuments();
-    return await Promise.all(docs.slice(0, HOMEPAGE_POSTS_NUMBER).map(async doc => (await doc.get()).data() as Post));
+    return await Promise.all(
+        docs.slice(0, HOMEPAGE_POSTS_NUMBER).map(async doc => ({
+            ...((await doc.get()).data() as PostDTO),
+            id: doc.id
+        }))
+    );
 };
 
 const getWarnings = async (): Promise<WarningInfo[]> => {
@@ -30,13 +35,12 @@ const getWarnings = async (): Promise<WarningInfo[]> => {
     return sort(
         await Promise.all(
             docs
-                .map(async doc => (await doc.data()) as Post)
+                .map(async doc => ({ ...((await doc.data()) as PostDTO), id: doc.id }))
                 .map(async data => {
                     const warning = await data;
                     return {
-                        ...warning,
+                        title: warning.title,
                         postId: warning.id,
-                        postDate: warning.postDate.toDate(),
                         dueDate: warning.dueDate ? zonedTimeToUtc(warning.dueDate.toDate(), 'Europe/Warsaw') : undefined
                     };
                 })

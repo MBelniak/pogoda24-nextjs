@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import Post, { PostType } from '../../model/Post';
+import PostDTO, { PostType } from '../../model/PostDTO';
 import { ForecastMapList } from './ForecastMapList';
 import { AdvancedImage } from '@cloudinary/react';
 import 'suneditor/dist/css/suneditor.min.css';
@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 const { nonExpandedPostLength } = config;
 
-interface ClientSidePost extends Omit<Post, 'postDate' | 'dueDate'> {
+interface ClientSidePost extends Omit<PostDTO, 'postDate' | 'dueDate'> {
     postDate: { _nanoseconds: number; _seconds: number };
     dueDate?: { _nanoseconds: number; _seconds: number };
 }
@@ -110,9 +110,9 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
             {props.post.postType === PostType.FACT ? (
                 <p className="basicLink">{props.post.title}</p>
             ) : (
-                <a href={postHref} className="basicLink">
+                <Link href={postHref} className="basicLink">
                     {props.post.title}
-                </a>
+                </Link>
             )}
         </div>
     );

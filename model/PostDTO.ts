@@ -1,8 +1,8 @@
 import { firestore } from 'firebase-admin';
 import Timestamp = firestore.Timestamp;
 
-export default interface Post {
-    id: number;
+export default interface PostDTO {
+    id: string;
     postDate: Timestamp;
     dueDate?: Timestamp;
     postType: PostType;
