@@ -50,7 +50,7 @@ export default async function Posts({ params }: Params) {
         <section className="mainContent">
             <div className="columns">
                 <div className="column is-1" />
-                <div className="column is-10 posts">
+                <div className="column is-10 flex-col justify-between p-2">
                     {posts.length !== 0 ? (
                         <div>
                             <PostsList posts={posts} />

@@ -22,7 +22,7 @@ interface PostsItemProps {
 }
 
 export const PostsListItem: React.FC<PostsItemProps> = props => {
-    const postHref = 'posts/' + props.post.id;
+    const postHref = '/posts/' + props.post.id;
 
     const isExpandedByDefault = React.useMemo(() => {
         let description;
@@ -37,15 +37,13 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
     const [isExpanded, setExpanded] = React.useState(isExpandedByDefault);
 
     const processDate = () => {
-        console.dir(props.post);
         const date = new Date(props.post.postDate._seconds * 1000).toLocaleString('pl-PL');
         return date.replace(', ', ' o ');
     };
 
     const expandPost = React.useCallback(() => {
         setExpanded(true);
-        // props.registerView([props.post.id]);
-    }, [props.post]);
+    }, []);
 
     const processDescription = (description: string): string => {
         if (!isExpanded) {
@@ -85,7 +83,7 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
                 />
                 {isExpanded ||
                     (props.post.postType === PostType.FACT ? (
-                        <Link href={'/posts/' + props.post.id} className="postLink">
+                        <Link href={postHref} className="postLink">
                             więcej
                         </Link>
                     ) : (
@@ -126,7 +124,9 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
         props.post.postType === PostType.FACT ? (
             <>
                 <Divider />
-                <div className="factImage">{<AdvancedImage cldImg={cldImg} />}</div>
+                <div className={'flex justify-center'}>
+                    <AdvancedImage cldImg={cldImg} />
+                </div>
             </>
         ) : props.post.imagesPublicIds.length > 0 ? (
             <>

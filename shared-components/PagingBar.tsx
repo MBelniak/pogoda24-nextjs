@@ -2,6 +2,8 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface PagingBarProps {
     pages: number;
@@ -17,15 +19,14 @@ const DefaultPagingBar: React.FC<PagingBarProps> = props => {
     return (
         <div className="pagination">
             <ReactPaginate
-                previousLabel={<i className={'fa fa-angle-left'} />}
-                nextLabel={<i className={'fa fa-angle-right'} />}
+                previousLabel={<FontAwesomeIcon icon={faAngleLeft} />}
+                nextLabel={<FontAwesomeIcon icon={faAngleRight} />}
                 breakLabel={'...'}
                 pageCount={props.pages}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={1}
                 onPageChange={props.handlePageClick}
                 containerClassName={`${props.className} text-lg pagingBar`}
-                // subContainerClassName={'pagingBarSub'}
                 activeClassName={'active'}
                 previousLinkClassName={'pagingBarPrevious'}
                 nextLinkClassName={'pagingBarNext'}

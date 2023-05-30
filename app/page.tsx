@@ -57,7 +57,7 @@ export default async function Home() {
     return (
         <main className="mainContent">
             <div className="columns">
-                <div className="column is-2 warnings">
+                <div className="column is-2 warnings pr-4">
                     <CurrentWarnings warningInfo={warnings} />
                 </div>
                 <div className="column is-8 posts">
@@ -73,7 +73,7 @@ export default async function Home() {
                         </div>
                     )}
                 </div>
-                <div className="column is-2 fontSizeMedium">
+                <div className="column is-2 pl-4 fontSizeMedium">
                     <ExternalApi />
                 </div>
             </div>

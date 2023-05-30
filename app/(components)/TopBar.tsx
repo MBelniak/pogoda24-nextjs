@@ -60,7 +60,7 @@ export const TopBar: React.FC = () => {
                     </Link>
                     <Link href={'/facts/0'} className={'navbar-item'}>
                         <FontAwesomeIcon fixedWidth icon={faNewspaper} className={'mx-2'} />
-                        Ciekawostki
+                        Artykuły
                     </Link>
                     <Link href={'/onas'} className={'navbar-item'}>
                         <FontAwesomeIcon fixedWidth icon={faSmileBeam} className={'mx-2'} />O Nas
