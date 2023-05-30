@@ -6,11 +6,13 @@ import { credential } from 'firebase-admin';
 import { TopBar } from '@/app/(components)/TopBar';
 const inter = Inter({ subsets: ['latin'] });
 
-const serviceAccount = require('../pogoda-24-7-key.json');
-
 if (!admin.apps.length) {
     admin.initializeApp({
-        credential: credential.cert(serviceAccount),
+        credential: credential.cert({
+            projectId: 'pogoda-24-7',
+            privateKey: process.env.FIRESTORE_PRIVATE_KEY!.split(String.raw`\n`).join('\n'),
+            clientEmail: 'firebase-adminsdk-p0fqw@pogoda-24-7.iam.gserviceaccount.com'
+        }),
         databaseURL: 'https://pogoda-24-7.firebaseio.com'
     });
 }

@@ -6,8 +6,6 @@ import PostDTO from '@/model';
 import { CurrentWarnings } from '@/app/(components)/CurrentWarnings';
 import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc';
 import sort from 'lodash/sortBy';
-import { firestore } from 'firebase-admin';
-import OrderByDirection = firestore.OrderByDirection;
 const db = getFirestore();
 const HOMEPAGE_POSTS_NUMBER = 6;
 

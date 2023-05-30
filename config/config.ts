@@ -1,8 +1,5 @@
 export default {
     cloud_name: 'pogoda24',
-    upload_preset: 'ml_default',
-    api_key: '272823382718224',
-    api_secret: process.env.API_SECRET,
     staff: [
         {
             imagePublicId: 'MichalB_eiu3dv',
