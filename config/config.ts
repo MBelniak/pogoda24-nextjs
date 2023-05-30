@@ -2,7 +2,7 @@ export default {
     cloud_name: 'pogoda24',
     staff: [
         {
-            imagePublicId: 'MichalB_eiu3dv',
+            imagePublicId: 'profile_apum2u',
             description:
                 'Michał Belniak</br>' +
                 '<i>Przygodę z meteorologią rozpocząłem w wieku 6 lat, gdy rodzice kupili mi pierwszą książkę o pogodzie. ' +
