@@ -31,7 +31,7 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
         } else {
             description = props.post.description;
         }
-        return description.length <= nonExpandedPostLength && description.split(/[(\r\n)(\n)]/g).length <= 2;
+        return description.length <= nonExpandedPostLength && description.split(/(\r\n)|(\n)/g).length <= 2;
     }, [props.post]);
 
     const [isExpanded, setExpanded] = React.useState(isExpandedByDefault);
@@ -148,7 +148,7 @@ export const PostsListItem: React.FC<PostsItemProps> = props => {
     };
 
     return (
-        <div className="post">
+        <div className="post mb-4 p-4 bg-white rounded-xl text-center">
             {props.post.postType === PostType.FACT ? (
                 <a href={postHref}>
                     <MainContent />

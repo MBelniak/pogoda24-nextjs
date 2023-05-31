@@ -35,7 +35,7 @@ export const Post = (props: PostProps) => {
     };
 
     return (
-        <div className="post">
+        <div className="post mb-4 p-4 bg-white rounded-xl text-center">
             <div className="postdate fontSizeSmall">{processDate(props.postDate)}</div>
             <br />
             <div className="postTitle fontSizeLarge">

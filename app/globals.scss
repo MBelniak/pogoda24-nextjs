@@ -1,7 +1,7 @@
+@charset "utf-8";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@charset "utf-8";
 
 @import 'theme.module';
 // Import only what you need from Bulma
@@ -47,7 +47,7 @@ html {
     overflow: auto;
 }
 body {
-    background-color: rgba(#00b5f5, 0.05);
+    background-color: rgba(#00b5f5, 0.1);
     background-size: 100vw 100%;
 }
 
@@ -76,37 +76,32 @@ span {
 
 .is-divider {
     margin: 15px 0 15px 0;
+    height: 2px;
+    border-image: linear-gradient(90deg, transparent, black, transparent) 0 0 1 0/1px;
 }
 
 .basicLink {
     color: $secondary-font-color;
-    transition: 0.3s;
+    transition: 0.2s;
     text-decoration: none;
 }
 
 .basicLink:hover {
-    transition: 0.3s;
     color: $secondary-color;
 }
 
 .post {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 0.4rem;
-    box-shadow: 0 0 4px $primary-color;
-    text-align: center;
+    //box-shadow: 0 0 4px $primary-color;
 }
 
 .postLink {
     color: $primary-font-color;
-    transition: 0.3s;
+    transition: 0.2s;
     text-decoration: underline;
 }
 
 .postLink:hover {
     color: $secondary-color;
-    transition: 0.3s;
 }
 
 .postDate {
@@ -256,10 +251,7 @@ span {
     margin: 0;
     position: absolute;
     top: 50%;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+    transition: all 0.2s;
     width: 0;
 }
 .icon-button:hover span {
@@ -288,10 +280,7 @@ span {
     line-height: 3rem;
     position: absolute;
     top: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+    transition: all 0.2s;
     width: 2.7rem;
     z-index: 10;
 }
@@ -312,5 +301,5 @@ span {
 }
 
 .current-warnings {
-    box-shadow: 0 0 4px red;
+    border: 1px solid red;
 }

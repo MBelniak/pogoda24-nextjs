@@ -5,7 +5,7 @@ import config from '@/config/config';
 export default async function ONas() {
     return (
         <section className="container is-widescreen mainContent">
-            <div className="post w-[95%] mx-auto">
+            <div className="post mb-4 p-4 bg-white rounded-xl text-center w-[95%] mx-auto">
                 <p className="text-base" style={{ margin: '15px', wordWrap: 'break-word' }}>
                     Dziękujemy, że zajrzałeś na naszą stronę.
                     <br />
