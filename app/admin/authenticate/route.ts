@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { btoa } from 'buffer';
 import { serialize } from 'cookie';
 
-export async function POST(req: NextRequest, res: any) {
+export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const username = formData.get('username');
     const password = formData.get('password');
@@ -15,7 +15,8 @@ export async function POST(req: NextRequest, res: any) {
                     path: '/',
                     httpOnly: true,
                     sameSite: true,
-                    secure: true
+                    secure: true,
+                    maxAge: 30 * 24 * 60 * 60
                 })
             }
         });
