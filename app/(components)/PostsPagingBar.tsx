@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import PagingBar from '@/shared-components/PagingBar';
+import PagingBar from '@/app/(components)/PagingBar';
 import { useRouter } from 'next/navigation';
 import styles from '@/app/theme.module.scss';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { getFirestore } from 'firebase-admin/firestore';
-import { PostsPagingBar } from '@/shared-components/PostsPagingBar';
 import PostDTO, { HrefToPostType, PostType } from '@/model';
 import { PostsList } from '@/app/(components)/PostsList';
+import { PostsPagingBar } from '@/app/(components)/PostsPagingBar';
 
 const db = getFirestore();
 

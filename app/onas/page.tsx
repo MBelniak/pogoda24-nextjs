@@ -1,7 +1,7 @@
 import React from 'react';
-import { Divider } from '@/shared-components/Divider';
 import { StaffItem } from '@/app/onas/StaffItem';
 import config from '@/config/config';
+import { Divider } from '@/app/(components)/Divider';
 export default async function ONas() {
     return (
         <section className="container is-widescreen mainContent">
