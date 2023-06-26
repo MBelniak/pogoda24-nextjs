@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalApi } from '@/shared-components/ExternalApi';
+import { ExternalApi } from '@/app/(components)/ExternalApi';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PostsList } from '@/app/(components)/PostsList';
 import PostDTO from '@/model';

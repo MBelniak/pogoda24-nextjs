@@ -19,19 +19,19 @@ export const Links = () => {
     return (
         <div className="my-2 flex flex-wrap justify-center content-start">
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="generator">
+                <Link href="/admin/generator">
                     <Image src="/poland.png" alt={'Generator'} width={100} height={100} className={'w-full p-2'} />
                     <span className={'text-white text-xl'}>Generator</span>
                 </Link>
             </div>
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="writer">
+                <Link href="/admin/writer">
                     <Image src={'/add.png'} alt={'Dodaj post'} width={100} height={100} className={'w-full p-2'} />
                     <span className={'text-white text-xl'}>Nowy post</span>
                 </Link>
             </div>
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="factwriter">
+                <Link href="/admin/factwriter">
                     <Image
                         src={'/addFact.png'}
                         alt={'Dodaj artykuł'}
@@ -43,13 +43,13 @@ export const Links = () => {
                 </Link>
             </div>
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="list">
+                <Link href="/admin/list/0">
                     <Image src={'/list.png'} alt={'Lista postów'} width={100} height={100} className={'w-full p-2'} />
                     <span className={'text-white text-xl'}>Lista postów</span>
                 </Link>
             </div>
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="traffic">
+                <Link href="/admin/traffic">
                     <Image
                         src={'/statistics.png'}
                         alt={'Statystyki'}
@@ -61,7 +61,7 @@ export const Links = () => {
                 </Link>
             </div>
             <div className="border-4 border-white rounded-xl flex-grow-0 flex-shrink basis-[190px] p-2 m-1 text-center cursor-pointer">
-                <Link href="files">
+                <Link href="/admin/files">
                     <Image src={'/files.png'} alt={'Mapki'} width={100} height={100} className={'w-full p-2'} />
                     <span className={'text-white text-xl'}>Przydatne mapki</span>
                 </Link>

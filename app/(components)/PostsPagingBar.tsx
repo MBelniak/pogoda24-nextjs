@@ -4,23 +4,24 @@ import PagingBar from '@/shared-components/PagingBar';
 import { useRouter } from 'next/navigation';
 import styles from '@/app/theme.module.scss';
 
-const POSTS_PER_PAGE = 6;
+export interface PostsPagingBarProps {
+    rootHref: string;
+    totalCount: number;
+    currentPage: number;
+    postsPerPage: number;
+}
 
-export const PostsPagingBar: React.FC<{ postTypeHref: string; totalCount: number; currentPage: number }> = ({
-    postTypeHref,
-    totalCount,
-    currentPage
-}) => {
+export const PostsPagingBar: React.FC<PostsPagingBarProps> = ({ rootHref, totalCount, currentPage, postsPerPage }) => {
     const router = useRouter();
 
     const handlePageClick = (selectedItem: { selected: number }) => {
         const selected = selectedItem.selected;
-        router.push(`/${postTypeHref}/${selected}`);
+        router.replace(`${rootHref}/${selected}`);
     };
 
     return (
         <PagingBar
-            pages={Math.ceil(totalCount / POSTS_PER_PAGE)}
+            pages={Math.ceil(totalCount / postsPerPage)}
             handlePageClick={handlePageClick}
             currentPage={currentPage}
             mainColor={styles.secondaryColor}

@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={inter.className}>
                 <TopBar />
                 {children}
+                <div id={'modal-root'} />
             </body>
         </html>
     );

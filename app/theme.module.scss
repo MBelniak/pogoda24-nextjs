@@ -1,5 +1,6 @@
 $primary-color: #23425f;
 $secondary-color: #25a5a5;
+$background-color: rgba(#00b5f5, 0.1);
 $primary-font-color: #222;
 $secondary-font-color: #353535;
 $footer-background-color: transparent;
@@ -21,4 +22,5 @@ $navbar-item-img-max-height: none;
     secondaryColor: $secondary-color;
     primaryFontColor: $primary-font-color;
     secondaryFontColor: $secondary-font-color;
+    backgroundColor: $background-color;
 }

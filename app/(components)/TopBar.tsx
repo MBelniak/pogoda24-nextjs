@@ -58,15 +58,15 @@ export const TopBar: React.FC = () => {
                     </div>
                     <div id="pogodaMenu" className="navbar-menu">
                         <div className="navbar-end">
-                            <Link href={'/forecasts/0'} className={'navbar-item'}>
+                            <Link href={'/posts/forecasts/0'} className={'navbar-item'}>
                                 <FontAwesomeIcon fixedWidth icon={faCloudSun} className={'mx-2'} />
                                 Prognozy
                             </Link>
-                            <Link href={'/warnings/0'} className={'navbar-item'}>
+                            <Link href={'/posts/warnings/0'} className={'navbar-item'}>
                                 <FontAwesomeIcon fixedWidth icon={faBolt} className={'mx-2'} />
                                 Ostrzeżenia
                             </Link>
-                            <Link href={'/facts/0'} className={'navbar-item'}>
+                            <Link href={'/posts/facts/0'} className={'navbar-item'}>
                                 <FontAwesomeIcon fixedWidth icon={faNewspaper} className={'mx-2'} />
                                 Artykuły
                             </Link>

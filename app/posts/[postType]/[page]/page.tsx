@@ -1,8 +1,8 @@
 import React from 'react';
-import { PostsList } from '../../(components)/PostsList';
-import PostDTO, { HrefToPostType, PostType } from '../../../model';
 import { getFirestore } from 'firebase-admin/firestore';
-import { PostsPagingBar } from '@/app/[postType]/[page]/PagingBar';
+import { PostsPagingBar } from '@/shared-components/PostsPagingBar';
+import PostDTO, { HrefToPostType, PostType } from '@/model';
+import { PostsList } from '@/app/(components)/PostsList';
 
 const db = getFirestore();
 
@@ -58,7 +58,8 @@ export default async function Posts({ params }: Params) {
                                 <PostsPagingBar
                                     totalCount={totalCount}
                                     currentPage={parseInt(params.page)}
-                                    postTypeHref={params.postType}
+                                    rootHref={`/${params.postType}`}
+                                    postsPerPage={POSTS_PER_PAGE}
                                 />
                             )}
                         </div>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface PagingBarProps {
+export interface PagingBarProps {
     pages: number;
     handlePageClick: (selectedItem: { selected: number }) => void;
     currentPage: number;

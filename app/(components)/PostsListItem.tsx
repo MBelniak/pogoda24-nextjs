@@ -4,7 +4,7 @@ import PostDTO, { PostType } from '../../model';
 import { ForecastMapList } from './ForecastMapList';
 import { AdvancedImage } from '@cloudinary/react';
 import 'suneditor/dist/css/suneditor.min.css';
-import { Divider } from '@/shared-components/Divider';
+import { Divider } from '@/app/(components)/Divider';
 import config from '@/config/config';
 import { cloudinary } from '@/cloudinary';
 import { fill } from '@cloudinary/url-gen/actions/resize';
@@ -22,7 +22,7 @@ interface PostsItemProps {
 }
 
 export const PostsListItem: React.FC<PostsItemProps> = props => {
-    const postHref = '/posts/' + props.post.id;
+    const postHref = '/post/' + props.post.id;
 
     const isExpandedByDefault = React.useMemo(() => {
         let description;
