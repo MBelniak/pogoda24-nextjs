@@ -10,7 +10,7 @@ import { getInitialCityData, useGenerator } from '@/app/admin/generator/hooks/us
 import { Modal } from '@/app/(components)/Modal';
 import classNames from 'classnames';
 
-export function saveCookie(name: string, value: string) {
+function saveCookie(name: string, value: string) {
     document.cookie = name + '=' + value + '; expires=Thu, 18 Dec 2025 12:00:00 UTC';
 }
 
