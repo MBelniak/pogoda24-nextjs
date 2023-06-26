@@ -1,3 +1,4 @@
+'use client';
 export function getCookie(name: string) {
     const cks = document.cookie.split('; ');
     for (let x = 0; x < cks.length; x++) {
