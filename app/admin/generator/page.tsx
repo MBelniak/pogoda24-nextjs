@@ -1,7 +1,6 @@
 'use client';
 import React, { ChangeEvent } from 'react';
 import { imgSrcsDay, imgSrcsNight } from '@/app/admin/generator/meta/consts';
-import { saveCookie } from '@/app/(utils)/getCookie';
 import { Canvas } from '@/app/admin/generator/(components)/Canvas';
 import { DayNightDate } from '@/app/admin/generator/(components)/DayNightDate';
 import { CityComponent } from '@/app/admin/generator/(components)/CityComponent';
@@ -10,6 +9,10 @@ import { Copyright } from '@/app/admin/(components)/Copyright';
 import { getInitialCityData, useGenerator } from '@/app/admin/generator/hooks/useGenerator';
 import { Modal } from '@/app/(components)/Modal';
 import classNames from 'classnames';
+
+export function saveCookie(name: string, value: string) {
+    document.cookie = name + '=' + value + '; expires=Thu, 18 Dec 2025 12:00:00 UTC';
+}
 
 type CityData = {
     temperature: string;

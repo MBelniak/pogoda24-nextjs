@@ -2,11 +2,21 @@
 import { canvasHeight, canvasWidth } from '@/app/admin/generator/(components)/Canvas';
 import { cityList, iconLabelH, iconLabelW, imgSrcsDay, imgSrcsNight } from '@/app/admin/generator/meta/consts';
 import React, { useEffect, useRef, useState } from 'react';
-import { getCookie } from '@/app/(utils)/getCookie';
 import { CityDataMap, DayOrNight } from '@/app/admin/generator/page';
 import { useModal } from '@/app/(components)/Modal';
 import format from 'date-fns/format';
 
+function getCookie(name: string) {
+    const cks = document.cookie.split('; ');
+    for (let x = 0; x < cks.length; x++) {
+        const index = cks[x].indexOf('=');
+        const nm = cks[x].substring(0, index);
+        if (nm == name) {
+            return cks[x].substring(index + 1);
+        }
+    }
+    return null;
+}
 export const getInitialCityData = (): CityDataMap => {
     const dataMap: CityDataMap = {};
     cityList.forEach(city => {
