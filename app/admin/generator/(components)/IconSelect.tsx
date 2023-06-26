@@ -1,10 +1,10 @@
 import React from 'react';
 import Select, { SingleValue } from 'react-select';
-import { DayOrNight } from '@/app/admin/generator/page';
 import { imgSrcsDay, imgSrcsNight } from '@/app/admin/generator/meta/consts';
 import { IconSelectLabel } from '@/app/admin/generator/(components)/IconSelectLabel';
 import styles from '@/app/theme.module.scss';
 import { StylesConfig } from 'react-select/dist/declarations/src/styles';
+import { DayOrNight } from '@/app/admin/generator/(components)/Generator';
 
 type SelectOption = { value: string; label: JSX.Element | null };
 const customStyles: (dayOrNight: DayOrNight) => StylesConfig<SelectOption> = dayOrNight =>

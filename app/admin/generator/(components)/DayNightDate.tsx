@@ -1,6 +1,6 @@
 'use client';
 import React, { ChangeEvent } from 'react';
-import { DayOrNight } from '@/app/admin/generator/page';
+import { DayOrNight } from '@/app/admin/generator/(components)/Generator';
 
 interface DayNightDateProps {
     dayOrNight: DayOrNight;
@@ -14,11 +14,14 @@ interface DayNightDateState {
 }
 
 export const DayNightDate: React.FC<DayNightDateProps> = props => {
-    const onDayNightChange = React.useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.checked) {
-            props.onDayNightChange(e.target.id as DayOrNight);
-        }
-    }, []);
+    const onDayNightChange = React.useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.checked) {
+                props.onDayNightChange(e.target.id as DayOrNight);
+            }
+        },
+        [props]
+    );
 
     return (
         <div className="flex-grow-0 flex-shrink basis-[220px] m-1 p-2 border-2 border-secondary rounded-xl">

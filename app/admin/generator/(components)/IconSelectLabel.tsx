@@ -3,7 +3,7 @@ import { AdvancedImage } from '@cloudinary/react';
 import { cloudinary } from '@/cloudinary';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import classNames from 'classnames';
-import { DayOrNight } from '@/app/admin/generator/page';
+import { DayOrNight } from '@/app/admin/generator/(components)/Generator';
 
 interface IconSelectLabelProps {
     iconCodesJson: Record<string, string>;

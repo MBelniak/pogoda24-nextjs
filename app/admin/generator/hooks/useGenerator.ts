@@ -2,40 +2,31 @@
 import { canvasHeight, canvasWidth } from '@/app/admin/generator/(components)/Canvas';
 import { cityList, iconLabelH, iconLabelW, imgSrcsDay, imgSrcsNight } from '@/app/admin/generator/meta/consts';
 import React, { useEffect, useRef, useState } from 'react';
-import { CityDataMap, DayOrNight } from '@/app/admin/generator/page';
 import { useModal } from '@/app/(components)/Modal';
 import format from 'date-fns/format';
-
-function getCookie(name: string) {
-    const cks = document.cookie.split('; ');
-    for (let x = 0; x < cks.length; x++) {
-        const index = cks[x].indexOf('=');
-        const nm = cks[x].substring(0, index);
-        if (nm == name) {
-            return cks[x].substring(index + 1);
-        }
-    }
-    return null;
-}
-export const getInitialCityData = (): CityDataMap => {
-    const dataMap: CityDataMap = {};
-    cityList.forEach(city => {
-        dataMap[city.name] = {
-            temperature: getCookie('new_generator_' + city.name + '_temp') || '',
-            iconCode: getCookie('new_generator_' + city.name + '_type')
-        };
-    });
-    return dataMap;
-};
+import { CityDataMap, DayOrNight } from '@/app/admin/generator/(components)/Generator';
+import { useCookies } from 'react-cookie';
 
 export const useGenerator = () => {
-    const savedDayOrNight = getCookie('new_generator_time');
     const { modalOpen, openModal, closeModal } = useModal();
     const [modalContent, setModalContent] = useState<React.ReactNode | undefined>(undefined);
     const canvasContext = useRef<CanvasRenderingContext2D | undefined>(undefined);
-    const [dayOrNight, setDayOrNight] = useState<DayOrNight>((savedDayOrNight as DayOrNight) || 'night');
-    const [cityDataMap, setCityDataMap] = useState<CityDataMap>(getInitialCityData());
+    const [dayOrNight, setDayOrNight] = useState<DayOrNight>('night');
     const [date, setDate] = useState<string>(format(new Date(), 'dd-MM-yyyy'));
+    const [cookies] = useCookies<string, Record<string, string>>([]);
+
+    const getInitialCityData = (): CityDataMap => {
+        const dataMap: CityDataMap = {};
+        cityList.forEach(city => {
+            dataMap[city.name] = {
+                temperature: cookies['new_generator_' + city.name + '_temp'] || '',
+                iconCode: cookies['new_generator_' + city.name + '_type'] || ''
+            };
+        });
+        return dataMap;
+    };
+
+    const [cityDataMap, setCityDataMap] = useState<CityDataMap>(getInitialCityData());
 
     const redrawMap = (generateIconsFlag = false) => {
         const cImg = new Image();
@@ -54,6 +45,17 @@ export const useGenerator = () => {
             }
         };
     };
+
+    function getCookie(name: string) {
+        for (let x = 0; x < Object.keys(cookies).length; x++) {
+            const index = cookies[x].indexOf('=');
+            const nm = cookies[x].substring(0, index);
+            if (nm == name) {
+                return cookies[x].substring(index + 1);
+            }
+        }
+        return null;
+    }
 
     const generateIcons = (): void => {
         window.scrollTo(0, 0);
@@ -119,6 +121,7 @@ export const useGenerator = () => {
     return {
         cityDataMap,
         setCityDataMap,
+        getInitialCityData,
         date,
         setDate,
         dayOrNight,
