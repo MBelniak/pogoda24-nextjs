@@ -2,7 +2,7 @@ import React from 'react';
 import { ExternalApi } from '@/app/(components)/ExternalApi';
 import { getFirestore } from 'firebase-admin/firestore';
 import { PostsList } from '@/app/(components)/PostsList';
-import PostDTO from '@/model';
+import PostDTO, { PostType } from '@/model';
 import { CurrentWarnings } from '@/app/(components)/CurrentWarnings';
 import zonedTimeToUtc from 'date-fns-tz/zonedTimeToUtc';
 import sort from 'lodash/sortBy';
@@ -28,7 +28,7 @@ const getPosts = async (): Promise<PostDTO[]> => {
 const getWarnings = async (): Promise<WarningInfo[]> => {
     const docs = await db
         .collection('posts')
-        .where('postType', '==', 'WARNING')
+        .where('postType', '==', PostType.WARNING)
         .where('dueDate', '>=', new Date())
         .get()
         .then(refs => refs.docs);

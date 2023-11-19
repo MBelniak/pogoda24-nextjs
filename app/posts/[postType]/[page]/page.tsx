@@ -15,11 +15,17 @@ interface Params {
 }
 
 const fetchPosts = async (postType: string, page: string): Promise<PostDTO[]> => {
+    const postsBeforeThePage = await db
+        .collection('posts')
+        .where('postType', '==', HrefToPostType[postType])
+        .orderBy('postDate', 'desc')
+        .limit(parseInt(page) * POSTS_PER_PAGE || 1)
+        .get();
     const docs = await db
         .collection('posts')
         .where('postType', '==', HrefToPostType[postType])
-        .orderBy('postDate')
-        .startAt(parseInt(page) * POSTS_PER_PAGE)
+        .orderBy('postDate', 'desc')
+        .startAt((postsBeforeThePage.docs.at(-1)?.data() as PostDTO | undefined)?.postDate ?? 1)
         .limit(POSTS_PER_PAGE)
         .get();
     return await Promise.all(
@@ -39,11 +45,7 @@ export default async function Posts({ params }: Params) {
     const totalCount = await fetchTotalCount(params.postType);
 
     const postTypeToText = (): string => {
-        return params.postType == PostType.FACT
-            ? 'ciekawostek'
-            : params.postType == PostType.WARNING
-            ? 'ostrzeżeń'
-            : 'prognoz';
+        return params.postType == 'facts' ? 'ciekawostek' : params.postType == 'warnings' ? 'ostrzeżeń' : 'prognoz';
     };
 
     return (
@@ -58,7 +60,7 @@ export default async function Posts({ params }: Params) {
                                 <PostsPagingBar
                                     totalCount={totalCount}
                                     currentPage={parseInt(params.page)}
-                                    rootHref={`/${params.postType}`}
+                                    rootHref={`/posts/${params.postType}`}
                                     postsPerPage={POSTS_PER_PAGE}
                                 />
                             )}

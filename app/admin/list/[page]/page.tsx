@@ -13,7 +13,7 @@ const POSTS_PER_PAGE = 10;
 const getData = async (currentPage: number): Promise<{ posts: PostDTO[]; totalCount: number }> => {
     const postsPromise = db
         .collection('posts')
-        .orderBy('postDate')
+        .orderBy('postDate', 'desc')
         .startAt(currentPage * POSTS_PER_PAGE)
         .limit(POSTS_PER_PAGE)
         .get()
